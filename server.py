@@ -11,4 +11,4 @@ def run_bot():
 
 
 if __name__ == "__main__":
-    app.run(host='https://tele-bot-app.herokuapp.com/', debug=False)
+    app.run(host='0.0.0.0', debug=False)
