@@ -1,6 +1,7 @@
 import random
 import telebot
 from telebot import types
+from flask import Flask
 
 
 first = ['Сегодня идеальный день для новых начинаний.', 'Оптимальный день для того, чтобы решиться на смелый поступок!', 'Будьте осторожны, сегодня звезды могут повлиять на ваше финансовое состояние.', 'Лучшее время, чтобы разобраться со старыми отношениями или начать новые.', 'Плодотворный день для того, чтобы разобраться с накопившимися делами.']
@@ -16,6 +17,11 @@ zodiaks = ['Овен', 'Телец', 'Близнецы', 'Рак', 'Лев', 'Д
 TOKEN = '801617964:AAGG_uN1V2hb3jWps0fSeEJuaykEfY632xA'
 
 bot = telebot.TeleBot(TOKEN)
+app = Flask(__name__)
+
+@app.route('/')
+def run_bot():
+    bot.polling(none_stop=True, interval=0)
 
 @bot.message_handler(content_types=['text'])
 def get_text_message(message):
@@ -45,5 +51,4 @@ def callback_worker(call):
 
 
 if __name__ == "__main__":
-    
-    bot.polling(none_stop=True, interval=0)
+    app.run(host='0.0.0.0:8080')
