@@ -22,6 +22,7 @@ app = Flask(__name__)
 @app.route('/')
 def run_bot():
     bot.polling(none_stop=True, interval=0)
+    return 'Bot is runing....'
 
 @bot.message_handler(content_types=['text'])
 def get_text_message(message):
@@ -51,4 +52,4 @@ def callback_worker(call):
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0:8080')
+    app.run()
