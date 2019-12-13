@@ -42,7 +42,3 @@ def callback_worker(call):
     if call.data == 'zodiac':
         msg = f'{random.choice(first)} {random.choice(second)} {random.choice(second_add)} {random.choice(third)}'
         bot.send_message(call.message.chat.id, msg)      
-
-
-if __name__ == "__main__":
-    pass

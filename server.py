@@ -5,10 +5,6 @@ from flask import Flask
 app = Flask(__name__)
 
 @app.route('/')
-def run_bot():
+def bot_start():
     bot.polling(none_stop=True, interval=0)
     return 'Bot is runing....'
-
-
-if __name__ == "__main__":
-    app.run()
