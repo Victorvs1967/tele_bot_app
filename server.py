@@ -6,5 +6,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def bot_start():
-    bot.polling(none_stop=True, interval=0)
     return 'Bot is runing....'
+
+
+if __name__ == "__main__":
+    bot.polling(none_stop=True, interval=0)
