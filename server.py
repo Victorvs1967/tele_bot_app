@@ -4,6 +4,7 @@ import os
 
 
 app = Flask(__name__)
+flag = False
 
 @app.route('/')
 def bot_start():
@@ -11,8 +12,9 @@ def bot_start():
 
 @app.route('/run')
 def bot_run():
+    if flag:
+        return 'Bot is runing....'
     bot.polling(none_stop=True, interval=0)
-    return 'Bot is runing....'
 
 
 if __name__ == "__main__":
