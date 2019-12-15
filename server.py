@@ -1,5 +1,5 @@
 from config import TOKEN, HEROKU_APP_URL
-from zodiak import bot
+from zodiak import *
 from flask import Flask, request
 import os
 
@@ -7,20 +7,20 @@ import os
 app = Flask(__name__)
 flag = True
 
-@app.route('/')
-def bot_start():
-    return '<h2>Bot is runing...</h2>', 200
+# @app.route('/')
+# def bot_start():
+#     return '<h2>Bot is runing...</h2>', 200
 
-@server.route('/' + TOKEN, methods=['POST'])
-def getMessage():
+@app.route('/' + TOKEN, methods=['POST'])
+def get_message():
     bot.process_new_updates([types.Update.de_json(request.stream.read().decode("utf-8"))])
     return "!", 200
-
-@server.route("/")
-def webhook():
+  
+@app.route('/', methods=["GET"])
+def index():
     bot.remove_webhook()
     bot.set_webhook(url=HEROKU_APP_URL + TOKEN)
-    return "!", 200
+    return "Hello from Heroku!", 200
 
 # @app.route('/bot')
 # def bot_run():
