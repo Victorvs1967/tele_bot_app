@@ -12,6 +12,7 @@ def bot_start():
 
 @app.route('/run')
 def bot_run():
+    global flag
     if flag:
         return 'Bot is runing....'
     bot.polling(none_stop=True, interval=0)
