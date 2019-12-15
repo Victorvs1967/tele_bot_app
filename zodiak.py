@@ -15,7 +15,7 @@ def get_text_message(message):
         keyboard = types.InlineKeyboardMarkup()
 
         for i in range(len(zodiaks)):
-            key = types.InlineKeyboardButton(text=zodiaks[i], callback_data=['zodiac', zodiaks[i]])
+            key = types.InlineKeyboardButton(text=zodiaks[i], callback_data='zodiac' + zodiaks[i])
             keyboard.add(key)
 
         bot.send_message(message.from_user.id, text='Выбери свой знак зодиака.', reply_markup=keyboard)
@@ -28,6 +28,6 @@ def get_text_message(message):
 @bot.callback_query_handler(func=lambda call: True)
 def callback_worker(call):
 
-    if call.data[0] == 'zodiac':
-        msg = f'{call.data[1]}:\n{random.choice(first)} {random.choice(second)} {random.choice(second_add)} {random.choice(third)}'
+    if call.data[:6] == 'zodiac':
+        msg = f'{call.data[6:]}:\n{random.choice(first)} {random.choice(second)} {random.choice(second_add)} {random.choice(third)}'
         bot.send_message(call.message.chat.id, msg)      
