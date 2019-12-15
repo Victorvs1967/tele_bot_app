@@ -14,7 +14,8 @@ def bot_start():
 def bot_run():
     global flag
     if flag:
-        bot.polling(none_stop=True, interval=0)
+        bot.polling()
+        # bot.polling(none_stop=True, interval=0)
         flag = False
     return 'Bot is starting....', 200
 
