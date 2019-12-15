@@ -9,7 +9,7 @@ bot = telebot.TeleBot(TOKEN)
 @bot.message_handler(content_types=['text'])
 def get_text_message(message):
 
-    if message.text[:6] == 'Привет'.lower():
+    if message.text[:6].lower() == 'привет':
         bot.send_message(message.from_user.id, 'Привет. Твой гороскоп на сегодня.')
 
         keyboard = types.InlineKeyboardMarkup()
