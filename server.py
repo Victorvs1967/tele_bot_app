@@ -4,15 +4,18 @@ import os
 
 
 app = Flask(__name__)
-flag = False
+flag = True
 
 @app.route('/')
 def bot_start():
+    return '<h2>Bot is runing...</h2><a href="/bot">Bot</a>', 200
+
+@app.route('/bot')
+def bot_run():
     global flag
     if flag:
-        return 'Bot is runing....', 200
-    bot.polling(none_stop=True, interval=0)
-    flag = True
+        bot.polling(none_stop=True, interval=0)
+        flag = False
     return 'Bot is starting....', 200
 
 
