@@ -15,6 +15,7 @@ def bot_run():
     if flag:
         return 'Bot is runing....'
     bot.polling(none_stop=True, interval=0)
+    flag = True
 
 
 if __name__ == "__main__":
